@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         // shared views
         View::share('locations', Location::locations());
 
+        Schema::defaultStringLength(191);
     }
 
     /**
