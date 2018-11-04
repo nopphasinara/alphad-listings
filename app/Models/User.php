@@ -27,4 +27,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // user company
+    public function company()
+    {
+        return $this->hasOne(Company::class, 'manger_id');
+    }
+
+    // check if user is company
+    public function isCompany()
+    {
+        return (boolean) $this->company()->exists();
+    }
+
 }

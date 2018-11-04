@@ -26,3 +26,16 @@ Http\Utilities
 #### Location
 
 Location return array of locations
+
+### Requests
+
+CompanyRequest
+
+### Policies
+
+CompanyPolicies
+
+### MiddleWare
+
+Company restrict access to edit/update company route  
+
