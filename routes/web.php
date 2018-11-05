@@ -33,4 +33,17 @@ Route::patch('/companies', 'CompaniesController@update')->name('companies.update
 Route::get('/companies/{company}', 'CompaniesController@show')->name('companies.show');
 
 
+/* Listings
+======================*/
+Route::get('listings', 'ListingsController@index')->name('listings.index');
+
+Route::get('listings/create', 'ListingsController@create')->name('listings.create');
+Route::post('listings', 'ListingsController@store')->name('listings.store');
+
+Route::get('/listings/{listing}/edit', 'ListingsController@edit')->name('listings.edit');
+Route::patch('/listings/{listing}', 'ListingsController@update')->name('listings.update');
+
+Route::get('/listings/{listing}', 'ListingsController@show')->name('listings.show');
+
+
 Route::get('/home', 'HomeController@index')->name('home');

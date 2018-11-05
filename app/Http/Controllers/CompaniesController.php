@@ -46,6 +46,7 @@ class CompaniesController extends Controller
     // get /companies/{company} company page
     public function show(Company $company)
     {
+        $company->load('listings');
         return view('companies.show', ['company' => $company]);
     }
 

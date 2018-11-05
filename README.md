@@ -30,10 +30,12 @@ Location return array of locations
 ### Requests
 
 CompanyRequest
+ListingRequest
 
 ### Policies
 
 CompanyPolicies
+ListingPolicies
 
 ### MiddleWare
 
