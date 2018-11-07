@@ -47,7 +47,24 @@ class CompaniesController extends Controller
     public function show(Company $company)
     {
         $company->load('listings');
-        return view('companies.show', ['company' => $company]);
+
+        $recommendations = Company::search($company->only(['category_id', 'location']));
+
+        return view('companies.show', ['company' => $company, 'recommendations' => $recommendations]);
+    }
+
+    // get /companies/search search for companies by location and categories
+    public function search(CompanyRequest $request) {
+//        $request->validate([
+//            //'category_id' => '', //todo
+//            'location' => ['required', Rule::in(Location::locations())],
+//        ]);
+
+        $conditions = $request->only(['location', 'category']);
+
+        $companies = Company::search($conditions);
+
+        return view('companies.search', ['companies' => $companies, 'conditions' => $conditions]);
     }
 
     // get /companies/edit edit company page

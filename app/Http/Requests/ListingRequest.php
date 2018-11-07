@@ -14,14 +14,14 @@ class ListingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3|max:100',
+            'title' => 'sometimes|required|min:3|max:100',
             //'category_id' => '', //todo
-            'description' => 'required|min:10|max:350',
-            'notes' => 'min:10|max:350',
-            'extra' => 'min:10|max:350',
-            'value' => 'required',
-            'attr_one' => 'required',
-            'attr_two' => 'required',
+            'description' => 'sometimes|required|min:10|max:350',
+            'notes' => 'sometimes|min:10|max:350',
+            'extra' => 'sometimes|min:10|max:350',
+            'value' => 'sometimes|required',
+            'attr_one' => 'sometimes|required',
+            'attr_two' => 'sometimes|required',
         ];
     }
 }

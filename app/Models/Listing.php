@@ -15,4 +15,16 @@ class Listing extends Model
         return $this->belongsTo(Company::class);
     }
 
+    // search listings
+    public static function search($conditions) {
+        $query = Listing::select();
+        foreach($conditions as $column => $value)
+        {
+            if ($value)
+                $query->where($column, '=', $value);
+        }
+        return $query->get();
+
+    }
+
 }

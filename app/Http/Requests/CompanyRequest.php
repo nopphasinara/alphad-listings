@@ -17,14 +17,14 @@ class CompanyRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'name' => 'required|min:3|max:100',
-            'slug' => ['required', 'min:3', 'max:100', Rule::unique('companies')->ignore($request->user()->company)],
+            'name' => 'sometimes|required|min:3|max:100',
+//            'slug' => ['sometimes', 'required', 'min:3', 'max:100', Rule::unique('companies')->ignore($request->user()->company)],
             //'category_id' => '', //todo
-            'description' => 'required|min:10|max:150',
-            'location' => ['required', Rule::in(Location::locations())],
+            'description' => 'sometimes|required|min:10|max:150',
+            'location' => ['sometimes', 'required', Rule::in(Location::locations())],
             //'sub_location' => [Rule::in(Location::sub-locations($request->location))],
-            'address' => 'required|min:5|max:150',
-            'contact' => 'required|min:10|max:150',
+            'address' => 'sometimes|required|min:5|max:150',
+            'contact' => 'sometimes|required|min:10|max:150',
         ];
     }
 }

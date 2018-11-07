@@ -11,7 +11,7 @@ class ListingsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show');
+        $this->middleware('auth')->except('index', 'show', 'search');
         $this->middleware('company')->only('create', 'store', 'edit', 'update');
     }
 
@@ -50,7 +50,21 @@ class ListingsController extends Controller
     {
         $listing->load('company');
 
-        return view('listings.show', ['listing' => $listing]);
+        $recommendations = Listing::search($listing->only(['attr_one', 'attr_two']));
+
+        return view('listings.show', ['listing' => $listing, 'recommendations' => $recommendations]);
+    }
+
+    // get /listings/search search for listings by attribute
+    public function search(ListingRequest $request) {
+//        $request->validate([
+//        ]);
+
+        $conditions = $request->only(['attr_one', 'attr_two']);
+
+        $listings = Listing::search($conditions);
+
+        return view('listings.search', ['listings' => $listings, 'conditions' => $conditions]);
     }
 
     // get /listings/{listing}/edit listing's edit page

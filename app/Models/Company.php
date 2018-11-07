@@ -22,6 +22,17 @@ class Company extends Model
         return $this->hasMany(Listing::class);
     }
 
+    // search companies
+    public static function search($conditions) {
+        $query = Company::select();
+        foreach($conditions as $column => $value)
+        {
+            if ($value)
+                $query->where($column, '=', $value);
+        }
+        return $query->get();
+    }
+
     // get companies byLocation
     public function scopeLocation($query, $location)
     {

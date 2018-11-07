@@ -6,7 +6,10 @@
 
 @section('right')
     @include('partials.company', ['company'=> $company])
+@endsection
 
-{{--    @include('partials.companies', ['companies'=> $companies])--}}
+@section('left')
+
+    @include('partials.companies', ['companies'=> $recommendations])
 
 @endsection

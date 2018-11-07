@@ -23,6 +23,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
+
+                @include('partials.search-companies')
+                @include('partials.search-listings')
+
                 @yield('right')
             </div>
             <div class="col-md-7">
