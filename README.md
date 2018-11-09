@@ -19,6 +19,10 @@ shared view located at Providers\AppServiceProvider
 
 locations => Utilities\Location::locations()
 
+#### custom if 
+
+company => @if(Auth::user()->isCompany())
+
 ### Utilities
 
 Http\Utilities

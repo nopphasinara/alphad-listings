@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /* Auth
 ======================*/
 Auth::routes();
+
+/* Page
+======================*/
+Route::get('/', 'PagesController@index')->name('home');
 
 
 /* company
@@ -68,6 +68,3 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
 
     Route::get('/categories/{category}', 'CategoriesController@show')->name('admin.categories.show');
 });
-
-
-Route::get('/home', 'HomeController@index')->name('home');

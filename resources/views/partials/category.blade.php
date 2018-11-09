@@ -1,32 +1,21 @@
-<div class="card mb-3">
-    <div class="card-header">
-        <a href="{{ route('categories.show', ['category' => $category->id]) }}">
-            <span class="font-weight-bold">{{ $category->name }}</span> @ {{ $category->slug }}
-        </a>
-    </div>
-    {{--<p class="m-3">{{$category->description}}</p>--}}
-    {{--
-    // todo
-    --}}
-    <div class="card-body">
-        <ul class="list-group">
-            @foreach($category->children as $child)
-                <li class="list-group-item"><a href="{{ route('categories.show', ['category' => $child->id]) }}">{{$child->name}}</a></li>
-            @endforeach
+<h3>{{ $category->name }} @ {{ $category->slug }}</h3>
 
-        </ul>
+<p class="bg-white p-2 mt-3">
+    @foreach($category->root() as $root)
+        <a href="{{ route('categories.show', ['category' => $root->id]) }}">{{$root->name}}</a>  >>
+    @endforeach
+</p>
+<hr>
+<p> {{ $category->description }}</p>
 
-        {{--@foreach($category->images as $img)--}}
-            {{--<img src="/storage/{{$img->path}}" alt="" class="img-fluid">--}}
-        {{--@endforeach--}}
+<ul class="list-group mt-3">
+    @foreach($category->children as $child)
+        <li class="list-group-item"><a href="{{ route('categories.show', ['category' => $child->id]) }}">{{$child->name}}</a></li>
+    @endforeach
+</ul>
 
-        {{--@if(Auth::check())--}}
-            {{--<form action="{{ route('favorites.store', ['category' => $category]) }}" method="post" class="mt-4">--}}
-                {{--@csrf--}}
-                {{--<button class="btn btn-primary" type="submit">save</button>--}}
-            {{--</form>--}}
-        {{--@else--}}
-            {{--<p>login to be able to favorite a category!</p>--}}
-        {{--@endif--}}
-    </div>
-</div>
+<ul class="list-group mt-3">
+    @if($category->isLeaf())
+        @include('partials.listings', ['listings'=> $category->listings])
+    @endif
+</ul>

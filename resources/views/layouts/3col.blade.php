@@ -23,18 +23,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
-
-                @include('partials.search-companies')
-                @include('partials.search-listings')
-
-                @yield('right')
+                @include('partials.website')
+                @yield('left')
             </div>
             <div class="col-md-7">
                 @yield('middle')
             </div>
             <div class="col-md-3">
-                @yield('left')
+                @yield('right')
+
+                @include('partials.search-companies')
+                @include('partials.search-listings')
+
             </div>
+
         </div>
     </div>
 </main>

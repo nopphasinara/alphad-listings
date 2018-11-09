@@ -8,7 +8,6 @@
 
 @endsection
 
-
-@section('left')
+@section('right')
     @include('partials.company', ['company'=> $listing->company])
 @endsection
