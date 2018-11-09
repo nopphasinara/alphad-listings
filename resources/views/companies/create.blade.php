@@ -47,19 +47,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="category">{{ __('Category') }}</label>
+                    <label for="category_id">{{ __('Category') }}</label>
 
-                    {{--<select name="category" id="category" class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}" value="{{ old('category') }}" required>--}}
-                        {{--@foreach($catrgoriess as $catrgory)--}}
-                            {{--<option value="{{$catrgory->id}}">{{$catrgory->name}}</option>--}}
-                        {{--@endforeach--}}
-                    {{--</select>--}}
+                    <select name="category_id" id="category_id" class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}" value="{{ old('category') }}" required>
+                        @foreach($categories as $catrgory)
+                            <option value="{{$catrgory->id}}">{{$catrgory->name}}</option>
+                        @endforeach
+                    </select>
 
-                    <input id="category_id" type="text" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" name="category_id" value="{{ old('category_id') }}" required>
-
-                    @if ($errors->has('category'))
+                    @if ($errors->has('category_id'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('category') }}</strong>
+                            <strong>{{ $errors->first('category_id') }}</strong>
                         </span>
                     @endif
                 </div>

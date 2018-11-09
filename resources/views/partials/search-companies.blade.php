@@ -5,14 +5,14 @@
         <hr>
 
         <form class="form my-3" method="GET" action="{{ route('companies.search') }}">
-            {{--<div class="form-group">--}}
-                {{--<label for="categories">categories</label>--}}
-                {{--<select name="categories" id="categories" class="form-control">--}}
-                    {{--@foreach($categoriess as $categories)--}}
-                        {{--<option value="{{$categories}}">{{$categories}}</option>--}}
-                    {{--@endforeach--}}
-                {{--</select>--}}
-            {{--</div>--}}
+            <div class="form-group">
+                <label for="category_id">category_id</label>
+                <select name="category_id" id="category_id" class="form-control">
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="location">location</label>

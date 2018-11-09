@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
+use App\Models\Category;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,11 +61,10 @@ class CompaniesController extends Controller
 //            'location' => ['required', Rule::in(Location::locations())],
 //        ]);
 
-        $conditions = $request->only(['location', 'category']);
-
+        $conditions = $request->only(['location', 'category_id']);
         $companies = Company::search($conditions);
 
-        return view('companies.search', ['companies' => $companies, 'conditions' => $conditions]);
+        return view('companies.search', ['companies' => $companies]);
     }
 
     // get /companies/edit edit company page

@@ -47,5 +47,27 @@ Route::patch('/listings/{listing}', 'ListingsController@update')->name('listings
 
 Route::get('/listings/{listing}', 'ListingsController@show')->name('listings.show');
 
+/* Category
+    ======================*/
+Route::get('/categories', 'CategoriesController@index')->name('categories.index');
+Route::get('/categories/{category}', 'CategoriesController@show')->name('categories.show');
+
+/* Admin
+======================*/
+Route::namespace('Admin')->prefix('admin')->group(function () {
+
+    /* Category
+    ======================*/
+    Route::get('/categories', 'CategoriesController@index')->name('admin.categories.index');
+
+    Route::get('/categories/create', 'CategoriesController@create')->name('admin.categories.create');
+    Route::post('/categories', 'CategoriesController@store')->name('admin.categories.store');
+
+    Route::get('/categories/{category}/edit', 'CategoriesController@edit')->name('admin.categories.edit');
+    Route::patch('/categories', 'CategoriesController@update')->name('admin.categories.update');
+
+    Route::get('/categories/{category}', 'CategoriesController@show')->name('admin.categories.show');
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -22,6 +22,12 @@ class Company extends Model
         return $this->hasMany(Listing::class);
     }
 
+    // return company's category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     // search companies
     public static function search($conditions) {
         $query = Company::select();

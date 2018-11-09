@@ -15,6 +15,12 @@ class Listing extends Model
         return $this->belongsTo(Company::class);
     }
 
+    // return listing category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     // search listings
     public static function search($conditions) {
         $query = Listing::select();
