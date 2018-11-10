@@ -56,6 +56,16 @@ Route::get('/categories/{category}', 'CategoriesController@show')->name('categor
 ======================*/
 Route::namespace('Admin')->prefix('admin')->group(function () {
 
+    /* statistics
+    ======================*/
+    Route::get('/', 'AdminController@index')->name('admin.index');
+
+    /*
+    ======================*/
+    Route::get('/users', 'AdminController@users')->name('admin.users');
+    Route::get('/companies', 'AdminController@companies')->name('admin.companies');
+    Route::get('/listings', 'AdminController@listings')->name('admin.listings');
+
     /* Category
     ======================*/
     Route::get('/categories', 'CategoriesController@index')->name('admin.categories.index');

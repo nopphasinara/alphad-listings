@@ -1,6 +1,6 @@
 <div class="card mb-3">
     <div class="card-header">
-        <a href="{{ route('categories.show', ['category' => $category->id]) }}">
+        <a href="{{ route('admin.categories.show', ['category' => $category->id]) }}">
             <span class="font-weight-bold">{{ $category->name }}</span> @ {{ $category->slug }}
         </a>
         <a class="float-right" href="{{ route('admin.categories.edit', ['category' => $category->id ]) }}">edit</a>

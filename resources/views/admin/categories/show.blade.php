@@ -1,6 +1,6 @@
-@extends('layouts.2col')
+@extends('layouts.admin')
 
-@section('middle')
+@section('content')
 
     <h3>{{ $category->name }} @ {{ $category->slug }}</h3>
 
